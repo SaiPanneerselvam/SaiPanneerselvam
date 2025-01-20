@@ -1,0 +1,42 @@
+@echo off
+:loop
+set /p input1="System/gubuntu/file/setup: $ "
+if "%input1%"=="time" (
+    for /f "tokens=1-4 delims=:. " %%a in ("%time%") do echo %%a:%%b:%%c
+) 
+if "%input1%"=="date" (
+    for /f "tokens=1-3 delims=/ " %%a in ("%date%") do echo %%a/%%b/%%c
+)
+if "%input1%"=="version" (
+    echo OS:  Gubuntu
+    echo Build Version: 9.02
+    echo Version Nickname: Ginormous Girrafe
+)
+if "%input1%"=="sudo apt gubuntu-pkg" (
+    set /p pswd="Enter password for (admin) User: "
+    if "%pswd%"=="admin" (
+        timeout /t 5
+        echo Loading Package Center...
+        timeout /t 2
+        echo Getting Package Tree...
+        timeout /t 2
+        echo Downloading Packages Tree (4GB)
+        timeout /t 10
+        echo gubuntu packages are already installed as __gubuntu_os__ in GUBUNTU. sudo delete __gubuntu__
+        timeout /t 5
+        echo Deleting Package Tree...
+        timeout /t 9
+    ) else (
+        echo Wrong Password.
+    )
+)
+if "%input1%"=="" (
+    echo.
+)
+if "%input1%"=="exit" (
+    exit
+)
+if not "%input1%"=="" (
+    echo Command "%input1%" Not found. Please Check for typo.
+)
+goto loop
